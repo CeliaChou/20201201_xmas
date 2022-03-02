@@ -1,0 +1,994 @@
+<?php
+    function getValue($method, $string) {  
+        $str = explode(",", $string);  
+        $max=sizeof($str);  
+        for($i=0; $i<$max; $i++) {    
+          $tmp = trim($str[$i]);    
+          global $$tmp;    
+          switch ($method) {      
+            case "GET" :       
+              $tmp = $_GET[$tmp];      
+              break;      
+            case "POST" :        
+              $$tmp = $_POST[$tmp];        
+              break;      
+            case "COOKIE" :        
+              $$tmp = $_COOKIE[$tmp];        
+              break;      
+            case "SERVER" :        
+              $$tmp = $_SERVER[$tmp];        
+              break;      
+            case "REQUEST" :        
+              $$tmp = $_REQUEST[$tmp];        
+              break;    
+          }    
+          $$tmp = trim($$tmp);  
+        }
+    }
+
+    $_COOKIE_DOMAIN=".digeam.com";
+
+    if($_COOKIE["StrID"]){
+        $KO_StrID   = $_COOKIE["StrID"];
+    } else {
+        SetCookie("return_url",base64_encode("https://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]),0,"/",$_COOKIE_DOMAIN);
+        $KO_StrID   = '';
+    }
+
+    $nowDate = date("YmdHis");
+?>
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>《武士傳奇：Knight Online》 官方網站-雪國的怪物盛典</title>
+        <meta property="og:description" content="《武士傳奇：Knight Online》 官方網站-雪國的怪物盛典" />
+        <meta property="og:title" content="《武士傳奇：Knight Online》 官方網站-雪國的怪物盛典" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://54.digeam.com/intro/20201201/" />
+        <meta property="og:site_name" content="《武士傳奇：Knight Online》 官方網站-雪國的怪物盛典 - 54.digeam.com" />
+        <meta property="og:locale" content="zh_tw" />
+        <meta property="article:author" content="https://www.facebook.com/Digeam54Online/" />
+        <meta property="og:image" content="https://54.digeam.com/intro/20201201/image/fb_share.jpg" />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="768" />
+        <meta name="author" content="DiGeam" />
+        <meta name="keywords" content="Digeam 掘夢網,Digeam,掘夢網,武士傳奇,武士傳奇Online,MGAME,包小松,武士廣告,54傳7,騎士Online,knight online,knightonline,knight,騎士,騎士網遊,艾莫爾,卡魯斯,人族,獸族,刀浪,弓浪,普魯特,巴斯特,羅高斯,暗金裝,RPG,國戰,攻城戰,盧那,盧那戰場,PVP,線上遊戲,角色扮演,動作遊戲,西方歐洲題材,奇幻,冒險,滑步,軍貢,國境戰,披風,Nosh System,雪國,怪物,盛典,聖誕活動,強化,怪物之杖,冬之挑戰賽"
+        />
+        <meta name="Resource-type" content="Document" />
+        <link rel="icon" href="https://54.digeam.com/images/favicon.ico" sizes="16x16">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/style.css">
+        <?php
+        if($_GET['utm_source'] != '') {
+    ?>
+            <script>
+                var wcf = "<?php echo $_GET['utm_source']; ?>";
+                var utm_medium = "<?php echo $_GET['utm_medium']; ?>";
+                var utm_campaign = "<?php echo $_GET['utm_campaign']; ?>";
+                var utm_term = "<?php echo $_GET['utm_term']; ?>";
+                var utm_content = "<?php echo $_GET['utm_content']; ?>";
+                document.cookie = "utm_source=" + wcf + "; expires=0; path=/; domain=.digeam.com;";
+                document.cookie = "utm_medium=" + utm_medium + "; expires=0; path=/; domain=.digeam.com;";
+                document.cookie = "utm_campaign=" + utm_campaign + "; expires=0; path=/; domain=.digeam.com;";
+                document.cookie = "utm_term=" + utm_term + "; expires=0; path=/; domain=.digeam.com;";
+                document.cookie = "utm_content=" + utm_content + "; expires=0; path=/; domain=.digeam.com;";
+            </script>
+            <script src="/js/wcf.js"></script>
+            <?php
+        }
+    ?>
+                <script>
+                    (function(w, d, s, l, i) {
+                        w[l] = w[l] || [];
+                        w[l].push({
+                            'gtm.start': new Date().getTime(),
+                            event: 'gtm.js'
+                        });
+                        var f = d.getElementsByTagName(s)[0],
+                            j = d.createElement(s),
+                            dl = l != 'dataLayer' ? '&l=' + l : '';
+                        j.async = true;
+                        j.src =
+                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                        f.parentNode.insertBefore(j, f);
+                    })(window, document, 'script', 'dataLayer', 'GTM-PB8RXNM');
+                </script>
+    </head>
+
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB8RXNM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <!-- particles.js container -->
+        <div id="particles-js" class="particles-js"></div>
+        <!-------------主視覺------------->
+
+        <div class="topshadow"></div>
+        <div class="toKO">
+            <a href="https://54.digeam.com/index/" class="KOBtn" target="_blank ">前往官網</a></div>
+
+        </div>
+        <div class="navbar" id="navbar">
+            <div class="navbarcon nav1">強化大師祭</div>
+            <div class="navbarcon nav2">冬之挑戰賽</div>
+            <?php
+            if($nowDate < '20201216000000') {
+        ?>
+                <div class="navbarcon nav3" onclick="alert('敬請期待')">怪物之杖的呼喚</div>
+                <div class="navbarcon nav4" onclick="alert('敬請期待')">聖誕活動</div>
+                <a href="javascript:alert('敬請期待');">
+                    <div class="navbarcon">扭曲的莫拉登</div>
+                </a>
+                <?php
+            } else {
+        ?>
+                    <div class="navbarcon nav3">怪物之杖的呼喚</div>
+                    <div class="navbarcon nav4">聖誕活動</div>
+                    <a href="https://54wiki.digeam.com/%E9%99%90%E6%99%82%E9%97%9C%E5%8D%A1-%E8%A2%AB%E6%89%AD%E6%9B%B2%E7%9A%84%E8%8E%AB%E6%8B%89%E7%99%BB/" target="_blank">
+                        <div class="navbarcon">扭曲的莫拉登</div>
+                    </a>
+                    <?php
+            }
+        ?>
+                        <div class="navbarcon nav6">TOP</div>
+        </div>
+        <div class="BGfogBox">
+            <div class="BGfog" id="BGfog">
+                <script src="js/three.r119.min.js"></script>
+                <script src="js/vanta.fog.min.js"></script>
+                <script>
+                    VANTA.FOG({
+                        el: "#BGfog",
+                        mouseControls: true,
+                        touchControls: true,
+                        gyroControls: false,
+                        minHeight: 200.00,
+                        minWidth: 200.00,
+                        highlightColor: 0x26c4d7,
+                        midtoneColor: 0x2a92ac,
+                        lowlightColor: 0x3c607a,
+                        baseColor: 0x34465c,
+                        blurFactor: 0.50,
+                        speed: 2.30,
+                        zoom: 0.80
+                    })
+                </script>
+            </div>
+        </div>
+        <div class="part0">
+
+            <div class="main">
+                <div class="monster">
+                </div>
+                <div class="fog">
+                    <div class="fog_01"></div>
+                </div>
+                <div class="fog_02">
+                    <div class="fog_01"></div>
+                </div>
+                <div class="fog_03">
+                    <div class="fog_01"></div>
+                </div>
+                <div class="mountain">
+                </div>
+                <div class="title">
+                </div>
+                <div class="Btn">
+                    <div class="masterBtn"></div>
+                    <div class="winterBtn"></div>
+                    <?php
+                    if($nowDate < '20201216000000') {
+                ?>
+                        <div class="caneBtn" onclick="alert('敬請期待')"></div>
+                        <div class="xmasBtn" onclick="alert('敬請期待')"></div>
+                        <a href="javascript:alert('敬請期待');">
+                            <div class="event5"></div>
+                        </a>
+                        <?php
+                    } else {
+                ?>
+                            <div class="caneBtn"></div>
+                            <div class="xmasBtn"></div>
+                            <a href="https://54wiki.digeam.com/%E9%99%90%E6%99%82%E9%97%9C%E5%8D%A1-%E8%A2%AB%E6%89%AD%E6%9B%B2%E7%9A%84%E8%8E%AB%E6%8B%89%E7%99%BB/" target="_blank">
+                                <div class="event5"></div>
+                            </a>
+                            <?php
+                    }
+                ?>
+                </div>
+            </div>
+            <div class="part1-2_decoration">
+                <div class="part" id="part1">
+                    <div class="part1title"></div>
+                    <div class="h1">活動時間</div>
+                    <div class="content">
+                        12/02(三) 維護後 ~ 12/29(二) 12:00
+                    </div>
+                    <div class="h1">活動方式</div>
+                    <div class="content">
+                        於活動期間，只要將「任意暗黑騎士武器」強化至指定階級，於活動結束後即可免費升級。
+                    </div>
+                    <div class="h1">活動獎勵</div>
+                    <div class="content2">
+                        <ol>
+                            <li>任意暗黑騎士武器達到反轉+1，免費升級至反轉+3。</li>
+                            <li>任意暗黑騎士武器達到反轉+5，免費升級至反轉+6。</li>
+                        </ol>
+                    </div>
+                    <div class="h1">注意事項</div>
+                    <div class="content2">
+                        <ul>
+                            <li> 活動僅限指定反轉階級，若與活動結束前繼續強化至指定階級以上或回復反轉，將無法參與活動。</li>
+                            <li> 於發獎時段，需將完成活動條件之道具，放至背包最左上角，以便進行升級。</li>
+                            <li> 若有1件以上的武器達成活動條件，則依序從背包最上方由左至右排序即可。</li>
+                            <li> 若未將道具放至指定位置，將道具裝備或放置倉庫等，視同放棄活動獎勵，後續則無法協助。</li>
+                            <li> 本活動發獎時間為12/30(三)維護時進行發獎。</li>
+                            <li> 若因其他不可抗力之因素，營運團隊保有暫停或終止本活動之權利。</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="part" id="part2">
+                    <div class="part2title"></div>
+                    <div class="h1">活動時間</div>
+                    <div class="content">
+                        12/01(三) 00:00 ~ 12/29(二) 23:59
+                    </div>
+                    <div class="h1">活動方式</div>
+                    <div class="content">
+                        活動期間內，積極參加羅納克蘭德狩獵區及盧那末日戰場系統，擊殺敵國單位來獲得「階級點數」依照期間所累積獲取的階級點數，排名為各國家的前50名玩家，將獲得特別獎勵！ </div>
+                    <div class="h1">活動獎勵</div>
+                    <div class="content">
+                        <table class="table">
+                            <tr class="tabletitle">
+                                <td colspan="2">
+                                    道具名稱</td>
+                                <td>活動排名</td>
+                                <td>卡魯斯</td>
+                                <td>艾默爾</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4" colspan="2">
+                                    <picture class="icon">
+                                        <source srcset="imgp/Dragon8.webp" type="image/webp">
+                                        <img src="img/Dragon8.jpg" alt="[龍之寶箱]8套防具">
+                                    </picture><br>[龍之寶箱]8套防具</td>
+                                <td>1名</td>
+                                <td>4張</td>
+                                <td>4張</td>
+                            </tr>
+                            <tr>
+                                <td>2-5名</td>
+                                <td>3張</td>
+                                <td>3張</td>
+                            </tr>
+                            <tr>
+                                <td>6-10名</td>
+                                <td>2張</td>
+                                <td>2張</td>
+                            </tr>
+                            <tr>
+                                <td>11-50名</td>
+                                <td>1張</td>
+                                <td>1張</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="h1">注意事項</div>
+                    <div class="content2">
+                        <ul>
+                            <li> [龍之寶箱]8套防具：莫拉登城，(商人)卡蜜拉→(龍之寶箱)物品兌換→(龍之寶箱)兌換防具類→兌換8套防具。</li>
+                            <li> [龍之寶箱]8套防具：兌換後隨機獲得任一職業第8系列套裝部位之一。 若因其他不可抗力之因素，營運團隊保有暫停或終止本活動之權利。</li>
+                            <li> 溫馨提醒，建議玩家於活動結束前10分鐘保存並退出遊戲，避免相關數據統計異常。</li>
+                            <li> 獎勵發放時間：獎勵道具統一於12/30(三)發放，將放送至信箱當中，請玩家特別留意。</li>
+                            <li> 發放獎勵時，需於背包保留空間，以便發送活動獎勵。</li>
+                            <li> 若使用投機方式，惡意獲取擊殺數，除失去活動資格外，將有可能違反遊戲管理規章，請特別留意。</li>
+                            <li> 本次活動以12/30(三)官網階級排名資料為主，請玩家特別留意。</li>
+                            <li> 若因其他不可抗力之因素，營運團隊保有暫停或終止本活動之權利。</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <?php
+                if($nowDate < '20201216000000') {
+            ?>
+                    <div class="no-part3-tree">
+                    </div>
+                    <?php
+                }
+            ?>
+            </div>
+        </div>
+        <?php
+        if($nowDate >= '20201216000000') {
+    ?>
+            <div class="part3-4">
+                <div class="part" id="part3" style="padding-top: 95px;">
+                    <div class="part3title"></div>
+                    <div class="h1">活動時間</div>
+                    <div class="content">
+                        活動時間：12/02(三) 維護後 ~ 12/16(二) 12:00
+                    </div>
+                    <div class="h1">活動方式</div>
+                    <div class="content2">
+                        <ol>
+                            <li>於遊戲中使用「高級怪物之杖」召喚怪物，累計召喚數量即可於活動結束後獲得對應獎勵。</li>
+                            <li>1支「高級怪物召喚之杖」可召喚3次怪物。</li>
+                            <li>獲得全部獎勵後將重置獲獎資格，最多可重置4次，獲得5次全部獎勵。</li>
+                        </ol>
+                    </div>
+                    <div class="h1">活動獎勵</div>
+                    <div class="content">
+                        <table class="table canetable">
+                            <tr class="tabletitle">
+                                <td>
+                                    召喚次數</td>
+                                <td colspan="2">獎勵</td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>龍之寶箱</td>
+                                <td>
+                                    <picture class="icon">
+                                        <source srcset="imgp/Dragon.webp" type="image/webp">
+                                        <img src="img/Dragon.jpg" alt="龍之寶箱">
+                                    </picture>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>50</td>
+                                <td>火龍的鱗片*1</td>
+                                <td>
+                                    <picture class="icon">
+                                        <source srcset="imgp/Scales.webp" type="image/webp">
+                                        <img src="img/Scales.jpg" alt="火龍的鱗片*1">
+                                    </picture>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>70</td>
+                                <td>飾品盒*1</td>
+                                <td>
+                                    <picture class="icon">
+                                        <source srcset="imgp/Dragondecoration.webp" type="image/webp">
+                                        <img src="img/Dragondecoration.jpg" alt="飾品盒*1">
+                                    </picture>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="h1">注意事項</div>
+                    <div class="content2">
+                        <ul>
+                            <li>活動召喚次數為帳號累積，同帳號內所有角色使用皆可列入計算。</li>
+                            <li>本活動判定為使用指定道具召喚怪物，若使用其他道具則無法列入計算。</li>
+                            <li>活動獎勵部分為不可交易、販售，請玩家注意。</li>
+                            <li>1支「高級怪物召喚之杖」可召喚3次怪物。</li>
+                            <li>獎勵採取累計制度，例如：玩家使用「高級怪物之杖」召怪物30次，於活動結束後可獲得消耗20次、30次的活動獎勵。</li>
+                            <li>本活動贈送之虛寶以遊戲中信件寄發放，請預留遊戲中信件空間，以免獎勵無法正常發放。</li>
+                            <li>每個帳號每個方案的獎勵僅能獲得五次，達到上限後則無法繼續獲得獎勵。</li>
+                            <li>若因其他不可抗力之因素，營運團隊保有暫停或終止本活動之權利。</li>
+                            <li>本活動統一發獎時間為12/16(三)。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="xmastable">
+                    <div class="xmastab1 xmastab" id="xmastab1" onclick="tab1();">星光下的雪人</div>
+                    <div class="xmastab2 xmastab" id="xmastab2" onclick="tab2();">雪落的聖誕</div>
+                    <div class="xmastab3 xmastab" id="xmastab3" onclick="tab3();">聖誕專屬場景</div>
+                </div>
+                <div class="part part4" id="part4">
+                    <div class="part4-1" id="part4-1">
+                        <div class="h1">活動時間</div>
+                        <div class="content">
+                            活動時間：12/16(三) 維護後 ~ 01/13(三) 維護前
+                        </div>
+                        <div class="h1">活動方式</div>
+                        <div class="content2">
+                            <ol>
+                                <li>莫拉登前廣場與各國本城會出現「搗蛋雪人」。</li>
+                                <li>擊殺雪人有機率可以獲得雪人掉落之物品。</li>
+                                <li>收集活動道具「星耀之光」1個，每日可與NPC[聖誕美女]兌換隨機獎勵一次。</li>
+                            </ol>
+                        </div>
+                        <div class="h1-2">雪人掉落道具</div>
+                        <div class="content">
+                            <table class="table">
+                                <tr class="tabletitle">
+                                    <td colspan="3">
+                                        道具名稱</td>
+                                    <td colspan="2">道具敘述</td>
+                                    <td>
+                                        備註</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_banana.webp" type="image/webp">
+                                            <img src="img/icon_banana.jpg" alt="香蕉口味地瓜">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2" width="15%">
+                                        香蕉口味地瓜</td>
+                                    <td colspan="2">15分鐘內增加175點防禦力，提升30點火焰、冰霜、雷電抵抗力。</td>
+                                    <td>
+                                        不可交易／販售</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_orange.webp" type="image/webp">
+                                            <img src="img/icon_orange.jpg" alt="橘子口味洋蔥">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2" width="15%">
+                                        橘子口味洋蔥</td>
+                                    <td colspan="2">15分鐘內增加10%攻擊力，提供5點力量、敏捷、智力、魔力。</td>
+                                    <td>
+                                        不可交易／販售</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_apple.webp" type="image/webp">
+                                            <img src="img/icon_apple.jpg" alt="蘋果口味番茄">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2" width="15%">
+                                        蘋果口味番茄</td>
+                                    <td colspan="2">15分鐘內，提高HP及MP各1000點。</td>
+                                    <td>
+                                        不可交易／販售</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_starlight.webp" type="image/webp">
+                                            <img src="img/icon_starlight.jpg" alt="星耀之光">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2" width="15%">
+                                        星耀之光</td>
+                                    <td colspan="2">可做為活動道具的合成材料。</td>
+                                    <td>
+                                        不可交易／販售</td>
+                                </tr>
+
+                            </table>
+                            <ul>
+                                <li>搗蛋雪人掉落道具，活動結束後將會刪除，請玩家留意。</li>
+                            </ul>
+                        </div>
+                        <div class="h1">活動獎勵</div>
+                        <div class="content">
+                            <table class="table">
+                                <tr class="tabletitle">
+                                    <td colspan="3">
+                                        兌換的道具</td>
+                                    <td>數量</td>
+                                    <td colspan="3">
+                                        屬性</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_exp.webp" type="image/webp">
+                                            <img src="img/icon_exp.jpg" alt="活動經驗寶石">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        活動經驗寶石</td>
+                                    <td>3</td>
+                                    <td colspan="3">
+                                        不可交易/販售/保管</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_def.webp" type="image/webp">
+                                            <img src="img/icon_def.jpg" alt="活動防禦寶石">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        活動防禦寶石</td>
+                                    <td>3</td>
+                                    <td colspan="3">
+                                        不可交易/販售/保管</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_life.webp" type="image/webp">
+                                            <img src="img/icon_life.jpg" alt="活動生命寶石">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        活動生命寶石</td>
+                                    <td>3</td>
+                                    <td colspan="3">
+                                        不可交易/販售/保管</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_mon.webp" type="image/webp">
+                                            <img src="img/icon_mon.jpg" alt="活動貢獻寶石">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        活動貢獻寶石</td>
+                                    <td>3</td>
+                                    <td colspan="3">
+                                        不可交易/販售/保管</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_stone.webp" type="image/webp">
+                                            <img src="img/icon_stone.jpg" alt="潘朵拉魔石">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        潘朵拉魔石</td>
+                                    <td>1</td>
+                                    <td colspan="3">
+                                        不可交易/販售/保管</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_bird.webp" type="image/webp">
+                                            <img src="img/icon_bird.jpg" alt="藍色米迦勒之翼 (7日)">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        藍色米迦勒之翼 (7日)</td>
+                                    <td>1</td>
+                                    <td colspan="3">
+                                        不可交易/販售/保管</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_ford.webp" type="image/webp">
+                                            <img src="img/icon_ford.jpg" alt="雪人-佛洛姆">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        雪人-佛洛姆</td>
+                                    <td>1</td>
+                                    <td colspan="3">
+                                        可交易</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_ted.webp" type="image/webp">
+                                            <img src="img/icon_ted.jpg" alt="雪人-泰特">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        雪人-泰特</td>
+                                    <td>1</td>
+                                    <td colspan="3">
+                                        可交易</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_teber.webp" type="image/webp">
+                                            <img src="img/icon_teber.jpg" alt="雪人-泰伯">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        雪人-泰伯</td>
+                                    <td>1</td>
+                                    <td colspan="3">
+                                        可交易</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_nubia.webp" type="image/webp">
+                                            <img src="img/icon_nubia.jpg" alt="雪人-努比亞">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        雪人-努比亞</td>
+                                    <td>1</td>
+                                    <td colspan="3">
+                                        可交易</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_star.webp" type="image/webp">
+                                            <img src="img/icon_star.jpg" alt="金光閃閃的星之戒指">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        金光閃閃的星之戒指</td>
+                                    <td>1</td>
+                                    <td colspan="3">
+                                        不可交易/販售</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_magic.webp" type="image/webp">
+                                            <img src="img/icon_magic.jpg" alt="魔錘[5個]">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        魔錘[5個]</td>
+                                    <td>1個</td>
+                                    <td colspan="3">
+                                        不可交易/販售/保管</td>
+                                </tr>
+                            </table>
+                            <table class="table">
+                                <tr class="tabletitle">
+                                    <td colspan="3">
+                                        名稱</td>
+                                    <td>防禦力</td>
+                                    <td>HP</td>
+                                    <td>魔法抵抗力</td>
+                                    <td>毒抵抗力</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_star.webp" type="image/webp">
+                                            <img src="img/icon_star.jpg" alt="金光閃閃的星之戒指">
+                                        </picture>
+                                    </td>
+                                    <td colspan="2">
+                                        金光閃閃的星之戒指</td>
+                                    <td>10</td>
+                                    <td>50</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="h1-2">星光合成表</div>
+                        <div class="content">
+                            <table class="table">
+                                <tr class="tabletitle">
+                                    <td colspan="2">
+                                        道具名稱</td>
+                                    <td colspan="3">合成所需材料</td>
+                                    <td>
+                                        效果</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_custar.webp" type="image/webp">
+                                            <img src="img/icon_custar.jpg" alt="模糊的銅星">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        模糊的銅星</td>
+                                    <td colspan="3">星耀之光1個<br> 魔晶石粉末10個
+                                    </td>
+                                    <td>
+                                        無</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_agstar.webp" type="image/webp">
+                                            <img src="img/icon_agstar.jpg" alt="隱約的銀星">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        隱約的銀星</td>
+                                    <td colspan="3">模糊的銅星1個<br> 星耀之光1個
+                                        <br> 魔晶石粉末15個
+                                    </td>
+                                    <td>
+                                        對怪物造成傷害+1%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_goldstar.webp" type="image/webp">
+                                            <img src="img/icon_goldstar.jpg" alt="閃亮的金星">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        閃亮的金星</td>
+                                    <td colspan="3">隱約的銀星1個<br> 星耀之光1個
+                                        <br> 魔晶石粉末20個
+                                        <br> 銀條1個
+                                    </td>
+                                    <td>
+                                        對怪物造成傷害+3%</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_starlight.webp" type="image/webp">
+                                            <img src="img/icon_starlight.jpg" alt="星耀之光">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        星耀之光</td>
+                                    <td colspan="3">可做為活動道具的合成材料。</td>
+                                    <td>
+                                        不可交易／販售</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="h1">注意事項</div>
+                        <div class="content2">
+                            <ul>
+                                <li>一個角色每日僅能與NPC[聖誕美女]兌換一次</li>
+                                <li>部分相關活動道具將於活動結束時刪除，請玩家特別留意。</li>
+                                <li>活動如因不可抗拒因素或系統問題導致活動無法進行，官方保有終止、修改活動內容的權利。</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="part4-2" id="part4-2">
+                        <div class="h1">活動時間</div>
+                        <div class="content">
+                            活動時間：12/16(三) 維護後 ~ 01/13(三) 維護前
+                        </div>
+                        <div class="h1">活動方式</div>
+                        <div class="content2">
+                            收集指定活動道具「雪的結晶體」，即可兌換相應獎勵，獲得方式如下：
+                            <ol>
+                                <li>活動期間內，擊殺與自己等級相近的怪物低機率可獲得「雪的結晶體」。</li>
+                                <li>活動期間內，於擊殺敵國玩家高機率獲得「雪的結晶體」。</li>
+                                <li>收集10個雪的結晶體，每日可向鵲鳥之母兌換隨機獎勵一次</li>
+                            </ol>
+                        </div>
+                        <div class="h1">活動獎勵</div>
+                        <div class="content">
+                            <table class="table">
+                                <tr class="tabletitle">
+                                    <td colspan="2">
+                                        道具名稱</td>
+                                    <td>數量</td>
+                                    <td colspan="2">
+                                        備註</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_exp.webp" type="image/webp">
+                                            <img src="img/icon_exp.jpg" alt="活動經驗寶石">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        活動經驗寶石</td>
+                                    <td>3個</td>
+                                    <td colspan="2">
+                                        不可交易/販售/保管<br> 活動結束後刪除
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_def.webp" type="image/webp">
+                                            <img src="img/icon_def.jpg" alt="活動防禦寶石">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        活動防禦寶石</td>
+                                    <td>3個</td>
+                                    <td colspan="2">
+                                        不可交易/販售/保管<br> 活動結束後刪除
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_life.webp" type="image/webp">
+                                            <img src="img/icon_life.jpg" alt="活動生命寶石">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        活動生命寶石</td>
+                                    <td>3個</td>
+                                    <td colspan="2">
+                                        不可交易/販售/保管<br> 活動結束後刪除
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_mon.webp" type="image/webp">
+                                            <img src="img/icon_mon.jpg" alt="活動貢獻寶石">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        活動貢獻寶石</td>
+                                    <td>3個</td>
+                                    <td colspan="2">
+                                        不可交易/販售/保管<br> 活動結束後刪除
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_ted.webp" type="image/webp">
+                                            <img src="img/icon_ted.jpg" alt="雪人變身捲軸">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        雪人變身捲軸</td>
+                                    <td>1個</td>
+                                    <td colspan="2">
+                                        不可交易/販售/保管<br> 活動結束後刪除
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_bag.webp" type="image/webp">
+                                            <img src="img/icon_bag.jpg" alt="魔法背包 (7日)">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        魔法背包 (7日)</td>
+                                    <td>1個</td>
+                                    <td colspan="2">
+                                        兌換後立即生效
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_event.webp" type="image/webp">
+                                            <img src="img/icon_event.jpg" alt="武士傳奇的專屬紀念徽章">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        武士傳奇的專屬紀念徽章(7日)</td>
+                                    <td>1個</td>
+                                    <td colspan="2">
+                                        兌換後立即生效
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <picture class="icon">
+                                            <source srcset="imgp/icon_bird.webp" type="image/webp">
+                                            <img src="img/icon_bird.jpg" alt="藍色米迦勒之翼 (7日)">
+                                        </picture>
+                                    </td>
+                                    <td>
+                                        藍色米迦勒之翼 (7日)</td>
+                                    <td>1個</td>
+                                    <td colspan="2">
+                                        兌換後立即生效<br> 可選擇想要的屬性
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="h1">注意事項</div>
+                            <div class="content2">
+                                <ul>
+                                    <li>一個角色每日僅能與NPC[聖誕美女]兌換一次</li>
+                                    <li>部分相關活動道具將於活動結束時刪除，請玩家特別留意。</li>
+                                    <li>活動如因不可抗拒因素或系統問題導致活動無法進行，官方保有終止、修改活動內容的權利。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="part4-3" id="part4-3">
+                        <div class="h1">活動時間</div>
+                        <div class="content">
+                            活動時間：12/16(三) 維護後 ~ 01/13(三) 維護前
+                        </div>
+                        <div class="h1">活動方式</div>
+                        <div class="content">
+                            活動時間內莫拉登變更為聖誕場景地圖
+                        </div>
+                        <div class="content">
+                            <picture>
+                                <source srcset="imgp/icon_xmaspicture.webp" type="image/webp">
+                                <img src="img/icon_xmaspicture.jpg" alt="遊戲場景" class="icon2">
+                            </picture>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <?php
+        }
+    ?>
+                <!-- footer start ------------------------------------------------------------------------------------------------->
+                <div class="footer">
+                    <div class="footerwrap">
+                        <a href="https://www.digeam.com/" target="_blank" class="digeam">DiGeam</a>
+                        <a class="mgame">Mgame</a>
+                        <div class="DGcopy">
+                            <div>掘夢網股份有限公司 © 2019</div>
+                            <div>Copyright © DiGeam Corporation. All Rights Reserved.</div>
+                            <div>客服信箱: <a href="https://www.digeam.com/cs" target="_blank">www.digeam.com/cs</a> | 官方網站: <a href="https://www.digeam.com" target="_blank">www.digeam.com</a></div>
+                        </div>
+                        <div class="grade">
+                            <div><img src="img/12plus.png"></div>
+                            <ul>
+                                <li>本遊戲為免費使用，部分內容涉及暴力情節。</li>
+                                <li>遊戲內另提供購買虛擬遊戲幣、物品等付費服務。</li>
+                                <li>請注意遊戲時間，避免沉迷。</li>
+                                <li style="color: #b93333;">本遊戲服務區域包含台灣、香港、澳門。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <script src="/js/jquery.min.js"></script>
+                <script src="js/move.js"></script>
+                <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+                <script src="js/snow.js?v=1.01"></script>
+
+    </body>
+    <script>
+        function movedown() {
+            var X = window.pageYOffset;
+            if (X > 600) {
+                document.getElementById("navbar").classList.add('active');
+            } else {
+                document.getElementById("navbar").classList.remove('active');
+            }
+            if (X > 3600) {
+                document.getElementById("particles-js").classList.add('snowBye');
+            } else {
+                document.getElementById("particles-js").classList.remove('snowBye');
+            }
+        }
+        window.addEventListener('scroll', movedown);
+    </script>
+    <script>
+        function tab1() {
+            document.getElementById("part4-1").style.display = "block";
+            document.getElementById("part4-2").style.display = "none";
+            document.getElementById("part4-3").style.display = "none";
+            document.getElementById("xmastab1").style.marginLeft = "-60px";
+            document.getElementById("xmastab2").style.marginLeft = "-25px";
+            document.getElementById("xmastab3").style.marginLeft = "-25px";
+        }
+
+        function tab2() {
+            document.getElementById("part4-2").style.display = "block";
+            document.getElementById("part4-1").style.display = "none";
+            document.getElementById("part4-3").style.display = "none";
+            document.getElementById("xmastab2").style.marginLeft = "-60px";
+            document.getElementById("xmastab1").style.marginLeft = "-25px";
+            document.getElementById("xmastab3").style.marginLeft = "-25px";
+        }
+
+        function tab3() {
+            document.getElementById("part4-3").style.display = "block";
+            document.getElementById("part4-2").style.display = "none";
+            document.getElementById("part4-1").style.display = "none";
+            document.getElementById("xmastab3").style.marginLeft = "-60px";
+            document.getElementById("xmastab2").style.marginLeft = "-25px";
+            document.getElementById("xmastab1").style.marginLeft = "-25px";
+        }
+    </script>
+    <?php
+    $ua = htmlentities($_SERVER['HTTP_USER_AGENT'], ENT_QUOTES, 'UTF-8');
+    if (preg_match('~MSIE|Internet Explorer~i', $ua) || (strpos($ua, 'Trident/7.0') !== false && strpos($ua, 'rv:11.0') !== false)) {
+?>
+        <script type="text/javascript">
+            document.documentElement.classList.add('no-webp');
+        </script>
+        <?php
+    } else {
+?>
+            <script src="/js/webp-detect.js"></script>
+            <?php
+    }
+?>
+
+    </html>
